@@ -1,4 +1,3 @@
-
 c = 299792458 # Speed of light in m/s
 
 # Map the frequency units to their corresponding multipliers to allow the user to enter any unit
