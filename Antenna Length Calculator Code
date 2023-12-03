@@ -1,0 +1,31 @@
+c = 299792458 # Speed of light in m/s
+
+# Map the frequency units to their corresponding multipliers to allow the user to enter any unit
+frequency_units = {
+    "Hz": 1,
+    "kHz": 1000,
+    "MHz": 1000000,
+    "GHz": 1000000000
+}
+
+# Get the frequency from the user and split the input into a numerical value and a unit of frequency
+frequency_str = input("Enter the frequency with its unit separated by space (e.g., 2.5 GHz): ")
+frequency_parts = frequency_str.split()
+frequency = float(frequency_parts[0])  # save the numerical part inside "frequency"
+frequency_unit = frequency_parts[1]    # save the unit part inside "frequency_unit"
+
+# Check for the frequency unit and convert the frequency to Hz
+if frequency_unit in frequency_units:
+    frequency_multiplier = frequency_units[frequency_unit]
+    frequency_hz = frequency * frequency_multiplier
+    # if the entered unit is invalid
+else: 
+    print("Invalid frequency unit.") 
+    exit()
+
+# Calculate the minimum length of the antenna
+wavelength = c / frequency_hz # Step 1
+antenna_length = round((wavelength / 4), 3) # Step 2 calculate the antenna length and round the result to 3 decimal places
+
+# Print the result
+print("\nThe minimum length of the antenna for a frequency of", frequency_str, "is", antenna_length, "meters.")
